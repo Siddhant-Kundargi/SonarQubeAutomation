@@ -1,0 +1,23 @@
+# # refs: https://medium.com/@solanki.kishan007/dockerized-use-sonarqube-in-docker-8a5bd05f3cc9
+
+services:
+  sonarqube:
+    image: sonarqube:community
+    container_name: sonarqube
+    ports:
+      - "9000:9000"
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+
+volumes:
+  sonarqube_data: 
+  sonarqube_extensions:
+  sonarqube_logs:
+
+networks:
+  sonar:
+    driver: bridge
+    name: sonar
+    external: true
